@@ -1,10 +1,29 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Rok przestepny";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="FizzBuzz.Rok"></label>
+            <input asp-for="FizzBuzz.Rok" class="form-control" value="" min="1899" max="2022" required />
+            <span asp-validation-for="FizzBuzz.Rok" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FizzBuzz.Imie"></label>
+            <input asp-for="FizzBuzz.Imie" class="form-control" maxlength="100" placeholder="" required />
+            <span asp-validation-for="FizzBuzz.Imie" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Zatwierdź</button>
+        @{
+            if(Model.FizzBuzz != null)
+            {
+                <div>
+                    @Model.FizzBuzz.Imie urodził się w @Model.FizzBuzz.Rok roku. To był rok @ViewData["Rok_przestepny_info"]
+                </div>
+            }
+        }
+    </form>
 </div>
